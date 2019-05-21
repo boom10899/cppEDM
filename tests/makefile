@@ -1,7 +1,7 @@
 
 CC  = icc
 
-EXE =  SimplexTest TestCommonTest SMapTest CCMTest MultiviewTest FishTestCUDA
+EXE =  SimplexTest TestCommonTest SMapTest CCMTest MultiviewTest FishTestApp
 OBJ = $(EXE:=.o) TestCommon.o
 
 CFLAGS = -std=c++11 -D PRINT_DIFFERENCE_IN_RESULTS
@@ -26,7 +26,7 @@ SMapTest: SMapTest.cc
 MultiviewTest: MultiviewTest.cc
 	$(CC) $@.cc -o $@ $(CFLAGS) $(LFLAGS) TestCommon.o
 
-FishTestCUDA: FishTestCUDA.cpp
+FishTestCUDA: FishTestApp.cpp
 	$(CC) $@.cpp -o $@ $(CFLAGS) $(LFLAGS) TestCommon.o
 
 clean:
