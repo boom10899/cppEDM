@@ -1,5 +1,5 @@
 
-CC  = g++
+CC  = icc
 OBJ = Common.o AuxFunc.o Parameter.o Embed.o Interface.o Neighbors.o\
 	Simplex.o Eval.o CCM.o Multiview.o SMap.o 
 
