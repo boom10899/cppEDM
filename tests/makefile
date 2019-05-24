@@ -26,7 +26,7 @@ SMapTest: SMapTest.cc
 MultiviewTest: MultiviewTest.cc
 	$(CC) $@.cc -o $@ $(CFLAGS) $(LFLAGS) TestCommon.o
 
-FishTestCUDA: FishTestApp.cpp
+FishTestApp: FishTestApp.cpp
 	$(CC) $@.cpp -o $@ $(CFLAGS) $(LFLAGS) TestCommon.o
 
 clean:

@@ -5,7 +5,7 @@ OBJ = Common.o AuxFunc.o Parameter.o Embed.o Interface.o Neighbors.o\
 
 LIB = libEDM.a
 
-CFLAGS = -std=c++11 -DCCM_THREADED -O3 # -g -DDEBUG -DDEBUG_ALL
+CFLAGS = -std=c++11 -DCCM_THREADED -O3 -I/home/boom/eigen/ # -g -DDEBUG -DDEBUG_ALL
 LFLAGS = -L./ -lstdc++ -lEDM -lpthread # -llapacke -llapack -lblas 
 
 all:	$(LIB)

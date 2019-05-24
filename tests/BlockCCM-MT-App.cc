@@ -49,7 +49,7 @@ int main( int argc, char *argv[] ) {
     
     try {
 
-        std::string fileName      = "../../ZebraFish/Fish_150a_Hypo.csv";
+        std::string fileName      = "../data/Trace_Hypo_135658.csv";
         std::string fileOut       = "EmbedCCM-MT-App_Out.csv";
         unsigned    nThreads      = 40;
         long        maxRows       = 1E15;  // not used if ASYNC_THREAD_WRITE
