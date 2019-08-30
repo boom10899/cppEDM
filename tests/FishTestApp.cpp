@@ -27,7 +27,7 @@ int main () {
     //   -e -l 1 99 -p 100 198 -T 1 -P -o Smplx_embd_block_3sp_pyEDM.csv
     //----------------------------------------------------------
 
-    DataFrame< double > dataFrameIn( "../data/", "Fish1_150a_Normo.csv" );
+    DataFrame< double > dataFrameIn( "../data/", "Fish1_150a_Normo.csv", true );
 
     //generate cpp output
     // cppOutput = Simplex ( "../data/", "Fish1_150a_Normo.csv",

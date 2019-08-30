@@ -261,6 +261,7 @@ void CrossMapThread( CCMApp::WorkQueue           &workQ,
                                            1,               // Tp,
                                            0,               // knn
                                            0,               // tau,
+                                           0,
                                            blockNames_ss.str(),
                                            blockNames[0],   // target
                                            true,            // embedded

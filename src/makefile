@@ -1,11 +1,11 @@
 
-CC  = g++
+CC  = icc
 OBJ = Common.o AuxFunc.o DateTimeUtil.o Parameter.o Embed.o Interface.o\
 	Neighbors.o Simplex.o Eval.o CCM.o Multiview.o SMap.o 
 
 LIB = libEDM.a
 
-CFLAGS = -std=c++11 -DCCM_THREADED -DMULTIVIEW_VALUES_OVERLOAD -O3 # -g -DDEBUG -DDEBUG_ALL
+CFLAGS = -std=c++11 -DCCM_THREADED -DMULTIVIEW_VALUES_OVERLOAD -O3 -I/home/boom/eigen # -g -DDEBUG -DDEBUG_ALL
 LFLAGS = -L./ -lstdc++ -lEDM -lpthread # -llapacke -llapack -lblas 
 
 all:	$(LIB)
