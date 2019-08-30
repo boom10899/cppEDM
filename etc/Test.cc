@@ -1,5 +1,6 @@
 
-// g++ Test.cc -o Test -std=c++11 -g -DDEBUG -DCCM_THREADED -I../src -L../lib -lstdc++ -lEDM -lpthread -O3
+// g++ Test.cc -o Test -std=c++11 -I../src -L../lib -lstdc++ -lEDM -lpthread -O3
+// -g -DDEBUG
 
 #include "Common.h"
 #include "Neighbors.h"
@@ -47,7 +48,7 @@ int main( int argc, char *argv[] ) {
         //----------------------------------------------------------
         Parameters param = Parameters( Method::Simplex,
                                        "../data/", "block_3sp.csv", "", "",
-                                       "1 100", "190 198", 2, 1, 4, 1, 0,
+                                       "1 100", "190 198", 2, 1, 4, 1, 0, 0,
                                        "x_t y_t z_t" );
         std::cout << param;
         
@@ -72,8 +73,8 @@ int main( int argc, char *argv[] ) {
         DataFrame<double> dataFrame = 
             Simplex( "../data/", "block_3sp.csv", "./",
                      "cppBlock3sp_Embedded.csv",
-                     "1 100", "101 195", 3, 1, 0, 1,
-                     "x_t x_t-1 x_t-2", "x_t", true, true );
+                     "1 100", "101 195", 3, 1, 0, 1, 0,
+                     "x_t x_t-1 x_t-2", "x_t", true, false, true );
         std::cout << dataFrame;
 
         VectorError ve = ComputeError(
@@ -95,8 +96,8 @@ int main( int argc, char *argv[] ) {
         DataFrame<double> dataFrameEmbed = 
             Simplex( "../data/", "block_3sp.csv", "./",
                      "cppBlock3sp_E3.csv",
-                     "1 100", "101 195", 3, 1, 0, 1,
-                     "x_t y_t z_t", "x_t", false, true );
+                     "1 100", "101 195", 3, 1, 0, 1, 0,
+                     "x_t y_t z_t", "x_t", false, false, true );
         
         dataFrameEmbed.MaxRowPrint() = 12; // Set number of rows to print
         std::cout << dataFrameEmbed;
@@ -145,9 +146,9 @@ int main( int argc, char *argv[] ) {
         //----------------------------------------------------------
         SMapValues SMV = 
             SMap( "../data/", "block_3sp.csv", "./", "smap_3sp_Embed.csv",
-                  "1 100", "101 195", 3, 1, 0, 1, 3.,
+                  "1 100", "101 195", 3, 1, 0, 1, 3., 0, 
                   "x_t", "x_t", "smap_3sp_coeff.csv", "",
-                  false, true );
+                  false, false, true );
 
         DataFrame< double > predictions  = SMV.predictions;
         DataFrame< double > coefficients = SMV.coefficients;
@@ -169,9 +170,9 @@ int main( int argc, char *argv[] ) {
         //----------------------------------------------------------
         SMapValues SMV2 = 
             SMap( "../data/", "circle.csv", "./", "smap_circle.csv",
-                  "1 100", "101 198", 2, 1, 0, 1, 4.,
+                  "1 100", "101 198", 2, 1, 0, 1, 4., 0,
                   "x y", "x", "smap_circ_coeff.csv", "",
-                  true, true );
+                  true, false, true );
 
         DataFrame< double > predictions2  = SMV2.predictions;
         DataFrame< double > coefficients2 = SMV2.coefficients;
@@ -209,7 +210,7 @@ int main( int argc, char *argv[] ) {
         DataFrame< double > EMBD = 
             EmbedDimension( "../data/", "TentMap_rEDM.csv",
                             "./", "EmbedDimOut.csv",
-                            "1 100", "201 500", 1, 1,
+                            "1 100", "201 500", 10, 1, 1,
                             "TentMap", "", false, false, 4 );
                 
         std::cout << "EmbedDimension TentMap_rEDM.csv:\n";
@@ -224,7 +225,7 @@ int main( int argc, char *argv[] ) {
         DataFrame< double > PD = 
             PredictInterval( "../data/", "TentMap_rEDM.csv",
                              "./", "PredictIntervalOut.csv",
-                             "1 100", "201 500", 2, 1,
+                             "1 100", "201 500", 10, 2, 1,
                              "TentMap", "", false, false, 4 );
                 
         std::cout << "PredictInterval TentMap_rEDM.csv:\n";
@@ -239,7 +240,7 @@ int main( int argc, char *argv[] ) {
         DataFrame< double > NL = 
             PredictNonlinear( "../data/", "TentMapNoise_rEDM.csv",
                               "./", "PredictNonlinearOut.csv",
-                              "1 100", "201 500", 2, 1, 1,
+                              "1 100", "201 500", "", 2, 1, 1,
                               "TentMap", "", false, false, 4 );
 
         NL.MaxRowPrint() = 15;
